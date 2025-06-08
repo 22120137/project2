@@ -11,3 +11,11 @@ spring:
     activate:
       on-profile: docker
     import: configserver:http://config-server:8888
+---
+spring:
+  zipkin:
+    base-url: http://zipkin.monitoring.svc.cluster.local:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+
