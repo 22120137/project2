@@ -7,6 +7,13 @@ spring:
     cache-names: vets
   profiles:
     active: production
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin.monitoring.svc.cluster.local:9411/api/v2/spans
 
 ---
 spring:
@@ -14,10 +21,3 @@ spring:
     activate:
       on-profile: docker
     import: configserver:http://config-server:8888
----
-spring:
-  zipkin:
-    base-url: http://zipkin.monitoring.svc.cluster.local:9411
-  sleuth:
-    sampler:
-      probability: 1.0
