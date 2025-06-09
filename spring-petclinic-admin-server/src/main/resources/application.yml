@@ -5,23 +5,24 @@ spring:
     import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
 
 management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
   tracing:
     sampling:
       probability: 1.0
   zipkin:
     tracing:
       endpoint: http://zipkin.monitoring.svc.cluster.local:9411/api/v2/spans
-  endpoints:
-    web:
-      exposure:
-        include: health, info, prometheus
-  endpoint:
-    prometheus:
-      access: unrestricted
-  prometheus:
-    metrics:
-      export:
-        enabled: true
+  
 
 ---
 
