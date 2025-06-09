@@ -33,36 +33,36 @@ pipeline {
                     echo "api-gateway tag: ${apiGatewayTag}"
                     def namespace = params.namespace.trim()
                     def values = """
-global:
-  namespace: ${namespace}
+                        global:
+                        namespace: ${namespace}
 
-services:
-  api-gateway:
-    image:
-      tag: "${getTag("api-gateway", params.api_gateway)}"
-    ingress:
-      host: petclinic-${namespace}.com
+                        services:
+                        api-gateway:
+                            image:
+                            tag: "${getTag("api-gateway", params.api_gateway)}"
+                            ingress:
+                            host: petclinic-${namespace}.com
 
-  config-server:
-    image:
-      tag: "${getTag("config-server", params.config_server)}"
+                        config-server:
+                            image:
+                            tag: "${getTag("config-server", params.config_server)}"
 
-  customers-service:
-    image:
-      tag: "${getTag("customers-service", params.customers_service)}"
+                        customers-service:
+                            image:
+                            tag: "${getTag("customers-service", params.customers_service)}"
 
-  discovery-server:
-    image:
-      tag: "${getTag("discovery-server", params.discovery_server)}"
+                        discovery-server:
+                            image:
+                            tag: "${getTag("discovery-server", params.discovery_server)}"
 
-  vets-service:
-    image:
-      tag: "${getTag("vets-service", params.vets_service)}"
+                        vets-service:
+                            image:
+                            tag: "${getTag("vets-service", params.vets_service)}"
 
-  visits-service:
-    image:
-      tag: "${getTag("visits-service", params.visits_service)}"
-"""
+                        visits-service:
+                            image:
+                            tag: "${getTag("visits-service", params.visits_service)}"
+                    """
 
                     writeFile file: "helm-chart/environments/dev-review/values-${namespace}.yaml", text: values
                     echo "Generated values-${namespace}.yaml"

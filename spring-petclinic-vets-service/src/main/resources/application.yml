@@ -7,6 +7,7 @@ spring:
     cache-names: vets
   profiles:
     active: production
+
 management:
   tracing:
     sampling:
@@ -14,8 +15,20 @@ management:
   zipkin:
     tracing:
       endpoint: http://zipkin.monitoring.svc.cluster.local:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+  endpoint:
+    prometheus:
+      access: unrestricted
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 
 ---
+
 spring:
   config:
     activate:

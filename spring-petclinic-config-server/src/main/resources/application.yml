@@ -9,6 +9,7 @@ spring:
         # Use the File System Backend to avoid git pulling. Enable "native" profile in the Config Server.
         native:
           searchLocations: file:///${GIT_REPO}
+
 management:
   tracing:
     sampling:
@@ -16,3 +17,14 @@ management:
   zipkin:
     tracing:
       endpoint: http://zipkin.monitoring.svc.cluster.local:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+  endpoint:
+    prometheus:
+      access: unrestricted
+  prometheus:
+    metrics:
+      export:
+        enabled: true
