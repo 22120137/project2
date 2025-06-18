@@ -20,6 +20,8 @@ management:
     export:
       prometheus:
         enabled: true
+    exemplars:
+      enabled: true
   tracing:
     enabled: true
     sampling:
