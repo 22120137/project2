@@ -41,7 +41,6 @@ pipeline {
                     if (env.BRANCH_NAME == 'main') {
                        compareTarget = "HEAD~1"
                     } else {
-                        sh "git fetch origin main"
                         compareTarget = "origin/main"
                     }
                     sh "git fetch origin main:refs/remotes/origin/main"
@@ -87,7 +86,7 @@ pipeline {
                         imageTag = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
                     }
                     def services = []
-                    if (env.BRANCH_NAME == 'main' || env.TAG_NAME) {
+                    if  (env.TAG_NAME) {
                         services = SERVICES.split("\n").collect { it.trim() }.findAll { it }
                     } else {
                         services = env.CHANGED_SERVICES.split(',').collect { it.trim() }
