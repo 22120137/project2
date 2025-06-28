@@ -38,10 +38,9 @@ global:
 
 services:
   api-gateway:
+    type: LoadBalancer
     image:
       tag: "${getTag("api-gateway", params.api_gateway)}"
-    ingress:
-      host: petclinic-${namespace}.com
 
   config-server:
     image:
