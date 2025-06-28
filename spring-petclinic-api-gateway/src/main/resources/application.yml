@@ -54,13 +54,16 @@ management:
     export:
       prometheus:
         enabled: true
+    exemplars:
+      enabled: true
   tracing:
+    enabled: true
     sampling:
       probability: 1.0
   zipkin:
     tracing:
       endpoint: ${MANAGEMENT_ZIPKIN_TRACING_ENDPOINT:http://zipkin.monitoring.svc.cluster.local:9411/api/v2/spans}
-  
+
 
 ---
 spring:
