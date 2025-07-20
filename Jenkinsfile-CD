@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         HELM_RELEASE = "petclinic"
-        HELM_CHART_REPO = "https://github.com/HCMUS-DevOps-Projects/project02-k8s.git"
-        GIT_REPO_CODE = "https://github.com/HCMUS-DevOps-Projects/project02.git"
+        HELM_CHART_REPO = "https://github.com/22120137/project2-k8s.git"
+        GIT_REPO_CODE = "https://github.com/22120137/project2.git"
         DOCKER_USER = "tlvu2004"
         KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
