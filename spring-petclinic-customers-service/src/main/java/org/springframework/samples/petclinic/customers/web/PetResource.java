@@ -96,5 +96,4 @@ class PetResource {
         return petRepository.findById(petId)
             .orElseThrow(() -> new ResourceNotFoundException("Pet " + petId + " not found"));
     }
-
 }
